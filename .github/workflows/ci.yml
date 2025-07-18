@@ -32,14 +32,14 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      # - name: Log in to Docker Hub
-      #   uses: docker/login-action@v3
-      #   with:
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # - name: Build Docker image
-      #   run: docker build -t ${{ secrets.DOCKER_USERNAME }}/payguard-fe:${{ github.sha }} .
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/payguard-fe:${{ github.sha }} .
 
-      # - name: Push Docker image
-      #   run: docker push ${{ secrets.DOCKER_USERNAME }}/payguard-fe:${{ github.sha }}
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/payguard-fe:${{ github.sha }}
